@@ -62,7 +62,76 @@
             <p class="text-xl max-w-3xl mx-auto">I'm a passionate and experienced networking and information systems security professional with extensive skills in configuring, securing, and managing complex networks. I thrive on solving security challenges and ensuring robust information protection systems.</p>
         </div>
     </section>
+    <!-- Chatbot -->
+<div id="chatbot-icon" class="fixed bottom-5 right-5 bg-blue-600 text-white p-4 rounded-full cursor-pointer hover:bg-blue-700 transition duration-300">
+    <i class="fas fa-comment-dots text-2xl"></i>
+</div>
 
+<div id="chatbot-window" class="fixed bottom-20 right-5 w-80 bg-white rounded-lg shadow-lg hidden">
+    <div class="bg-blue-600 text-white p-4 rounded-t-lg flex justify-between items-center">
+        <h4 class="font-bold">Portfolio Chatbot</h4>
+        <button id="close-chat" class="text-white hover:text-gray-200">&times;</button>
+    </div>
+    <div id="chat-messages" class="h-80 overflow-y-auto p-4"></div>
+    <div class="p-4 border-t">
+        <input type="text" id="user-input" placeholder="Type your message..." class="w-full p-2 border rounded">
+    </div>
+</div>
+
+<script>
+    const chatbotIcon = document.getElementById('chatbot-icon');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const closeChat = document.getElementById('close-chat');
+    const chatMessages = document.getElementById('chat-messages');
+    const userInput = document.getElementById('user-input');
+
+    chatbotIcon.addEventListener('click', () => {
+        chatbotWindow.classList.toggle('hidden');
+    });
+
+    closeChat.addEventListener('click', () => {
+        chatbotWindow.classList.add('hidden');
+    });
+
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const message = userInput.value.trim();
+            if (message) {
+                addMessage('user', message);
+                respondToUser(message);
+                userInput.value = '';
+            }
+        }
+    });
+
+    function addMessage(sender, message) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('mb-2', sender === 'user' ? 'text-right' : 'text-left');
+        messageElement.innerHTML = `<span class="inline-block p-2 rounded-lg ${sender === 'user' ? 'bg-blue-100' : 'bg-gray-200'}">${message}</span>`;
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function respondToUser(message) {
+        const lowercaseMessage = message.toLowerCase();
+        if (lowercaseMessage.includes('hello') || lowercaseMessage.includes('hi')) {
+            addMessage('bot', 'Hello! How can I help you today?');
+        } else if (lowercaseMessage.includes('how are you')) {
+            addMessage('bot', 'I\'m just a computer program, but I\'m functioning well! How can I assist you today?');
+        } else if (lowercaseMessage.includes('what is your name')) {
+            addMessage('bot', 'I\'m the Portfolio Chatbot. You can call me Chatbot.');
+        } else if (lowercaseMessage.includes('what is your purpose')) {
+            addMessage('bot', 'I can help you with information about Steven Jackson\'s portfolio. How can I assist you today?');
+        } else if (lowercaseMessage.includes('what is your name')) {
+            addMessage('bot', 'I\'m the Portfolio Chatbot. You can call me Chatbot.');
+        } else if (lowercaseMessage.includes('what is your purpose')) {
+            addMessage('bot', 'I can help you with information about Steven Jackson\'s portfolio. How can I assist you today?');
+        } else if (lowercaseMessage.includes('what is your name')) {
+            addMessage('bot', 'I\'m the Portfolio Chatbot. You can call me Chatbot.');
+        } else if (lowercaseMessage.includes('what is your purpose')) {
+            addMessage('bot', 'I can help you with information about Steven Jackson\'s portfolio. How can I assist you today?');
+        }
+    </script>
     <!-- Skills Section -->
     <section id="skills" class="py-20">
         <div class="container mx-auto">
