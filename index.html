@@ -41,6 +41,7 @@
                 <li><a href="#about" class="hover:text-blue-400 transition duration-300">About</a></li>
                 <li><a href="#skills" class="hover:text-blue-400 transition duration-300">Skills</a></li>
                 <li><a href="#projects" class="hover:text-blue-400 transition duration-300">Projects</a></li>
+                <li><a href="#code-showcase" class="hover:text-blue-400 transition duration-300">Code</a></li>
                 <li><a href="#contact" class="hover:text-blue-400 transition duration-300">Contact</a></li>
             </ul>
         </div>
@@ -123,6 +124,67 @@
             </div>
         </div>
     </section>
+<!-- ... existing code ... -->
+
+<!-- Python Code Showcase Section -->
+<section id="code-showcase" class="py-20">
+    <div class="container mx-auto">
+        <h3 class="text-4xl font-bold text-center mb-12 neon-text">Code Showcase</h3>
+        <div class="glass-effect p-6 hover-scale">
+            <h4 class="text-2xl font-semibold mb-4 text-blue-400">Network Port Scanner</h4>
+            <p class="mb-4">A Python script that scans for open ports on a given IP address:</p>
+            <pre class="bg-gray-800 text-green-400 p-4 rounded-lg overflow-x-auto">
+<code>import socket
+import threading
+from queue import Queue
+
+target = "example.com"
+queue = Queue()
+open_ports = []
+
+def portscan(port):
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect((target, port))
+        return True
+    except:
+        return False
+
+def fill_queue(port_list):
+    for port in port_list:
+        queue.put(port)
+
+def worker():
+    while not queue.empty():
+        port = queue.get()
+        if portscan(port):
+            print(f"Port {port} is open!")
+            open_ports.append(port)
+
+port_list = range(1, 1024)
+fill_queue(port_list)
+
+thread_list = []
+
+for t in range(100):
+    thread = threading.Thread(target=worker)
+    thread_list.append(thread)
+
+for thread in thread_list:
+    thread.start()
+
+for thread in thread_list:
+    thread.join()
+
+print(f"Open ports are: {open_ports}")
+</code>
+            </pre>
+            <p class="mt-4">This script demonstrates multithreaded port scanning, a useful technique in network security analysis.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ... rest of the existing code ... -->
 
     <!-- Contact Section -->
     <section id="contact" class="py-20">
