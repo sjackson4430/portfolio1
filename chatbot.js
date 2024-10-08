@@ -61,4 +61,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const response = "I received your message: " + message;
         return response;
     }
+    
+    // Call the function and log the response
+    const userMessage = "Hello, chatbot!";
+    const botResponse = respondToUser(userMessage);
+    console.log(botResponse);   
 });
