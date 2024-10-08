@@ -62,7 +62,8 @@
             <p class="text-xl max-w-3xl mx-auto">I'm a passionate and experienced networking and information systems security professional with extensive skills in configuring, securing, and managing complex networks. I thrive on solving security challenges and ensuring robust information protection systems.</p>
         </div>
     </section>
-    <!-- Chatbot -->
+    
+<!-- Chatbot -->
 <div id="chatbot-icon" class="fixed bottom-5 right-5 bg-blue-600 text-white p-4 rounded-full cursor-pointer hover:bg-blue-700 transition duration-300">
     <i class="fas fa-comment-dots text-2xl"></i>
 </div>
@@ -114,24 +115,30 @@
 
     function respondToUser(message) {
         const lowercaseMessage = message.toLowerCase();
-        if (lowercaseMessage.includes('hello') || lowercaseMessage.includes('hi')) {
-            addMessage('bot', 'Hello! How can I help you today?');
-        } else if (lowercaseMessage.includes('how are you')) {
-            addMessage('bot', 'I\'m just a computer program, but I\'m functioning well! How can I assist you today?');
-        } else if (lowercaseMessage.includes('what is your name')) {
-            addMessage('bot', 'I\'m the Portfolio Chatbot. You can call me Chatbot.');
-        } else if (lowercaseMessage.includes('what is your purpose')) {
-            addMessage('bot', 'I can help you with information about Steven Jackson\'s portfolio. How can I assist you today?');
-        } else if (lowercaseMessage.includes('what is your name')) {
-            addMessage('bot', 'I\'m the Portfolio Chatbot. You can call me Chatbot.');
-        } else if (lowercaseMessage.includes('what is your purpose')) {
-            addMessage('bot', 'I can help you with information about Steven Jackson\'s portfolio. How can I assist you today?');
-        } else if (lowercaseMessage.includes('what is your name')) {
-            addMessage('bot', 'I\'m the Portfolio Chatbot. You can call me Chatbot.');
-        } else if (lowercaseMessage.includes('what is your purpose')) {
-            addMessage('bot', 'I can help you with information about Steven Jackson\'s portfolio. How can I assist you today?');
+        let response = "I'm sorry, I don't have information about that. Can you ask me something related to my skills or projects?";
+
+        if (lowercaseMessage.includes('network') || lowercaseMessage.includes('security')) {
+            response = "I specialize in network configuration and information security. I can help with implementing firewalls, securing cloud infrastructure, and performing vulnerability assessments.";
+        } else if (lowercaseMessage.includes('project')) {
+            response = "One of my key projects was a network segmentation project where I implemented VLAN segmentation and configured firewall rules for improved security.";
+        } else if (lowercaseMessage.includes('skill')) {
+            response = "My skills include network configuration, information security, ethical hacking, cloud security, encryption technologies, and data protection.";
+        } else if (lowercaseMessage.includes('contact') || lowercaseMessage.includes('email')) {
+            response = "You can contact me at sjackson4430@gmail.com. I'm always open to discussing new opportunities or projects!";
+        } else if (lowercaseMessage.includes('hello') || lowercaseMessage.includes('hi')) {
+            response = "Hello! How can I assist you today? Feel free to ask about my skills, projects, or how to get in touch.";
         }
-    </script>
+
+        setTimeout(() => {
+            addMessage('bot', response);
+        }, 500);
+    }
+
+    // Initial greeting
+    setTimeout(() => {
+        addMessage('bot', "Hello! I'm the portfolio chatbot. How can I help you today?");
+    }, 1000);
+</script>
     <!-- Skills Section -->
     <section id="skills" class="py-20">
         <div class="container mx-auto">
