@@ -56,7 +56,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
             console.error("Chat messages container not found");
         }
     }
-
     function respondToUser(message) {
         console.log("Responding to user message:", message);
         const response = "I received your message: " + message;
+        return response;
+    }
+});
