@@ -11,65 +11,52 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     console.log("Elements selected:", { chatbotIcon, chatbotWindow, closeChat, chatMessages, userInput });
 
-    chatbotIcon.addEventListener('click', () => {
-        console.log("Chat icon clicked");
-        chatbotWindow.classList.toggle('hidden');
-    });
+    if (chatbotIcon) {
+        chatbotIcon.addEventListener('click', () => {
+            console.log("Chat icon clicked");
+            chatbotWindow.classList.toggle('hidden');
+        });
+    } else {
+        console.error("Chat icon not found");
+    }
 
-    closeChat.addEventListener('click', () => {
-        console.log("Close chat clicked");
-        chatbotWindow.classList.add('hidden');
-    });
+    if (closeChat) {
+        closeChat.addEventListener('click', () => {
+            console.log("Close chat clicked");
+            chatbotWindow.classList.add('hidden');
+        });
+    } else {
+        console.error("Close chat button not found");
+    }
 
-    userInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            const message = userInput.value.trim();
-            console.log("User pressed Enter. Message:", message);
-            if (message) {
-                addMessage('user', message);
-                respondToUser(message);
-                userInput.value = '';
+    if (userInput) {
+        userInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const message = userInput.value.trim();
+                console.log("User pressed Enter. Message:", message);
+                if (message) {
+                    addMessage('user', message);
+                    respondToUser(message);
+                    userInput.value = '';
+                }
             }
-        }
-    });
+        });
+    } else {
+        console.error("User input field not found");
+    }
 
     function addMessage(sender, message) {
         console.log(`Adding message from ${sender}:`, message);
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('mb-2', sender === 'user' ? 'text-right' : 'text-left');
-        messageElement.innerHTML = `<span class="inline-block p-2 rounded-lg ${sender === 'user' ? 'bg-blue-100' : 'bg-gray-200'}">${message}</span>`;
-        chatMessages.appendChild(messageElement);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+        if (chatMessages) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = `${sender}: ${message}`;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        } else {
+            console.error("Chat messages container not found");
+        }
     }
 
     function respondToUser(message) {
         console.log("Responding to user message:", message);
-        const lowercaseMessage = message.toLowerCase();
-        let response = "I'm sorry, I don't have information about that. Can you ask me something related to my skills or projects?";
-
-        if (lowercaseMessage.includes('network') || lowercaseMessage.includes('security')) {
-            response = "I specialize in network configuration and information security. I can help with implementing firewalls, securing cloud infrastructure, and performing vulnerability assessments.";
-        } else if (lowercaseMessage.includes('project')) {
-            response = "One of my key projects was a network segmentation project where I implemented VLAN segmentation and configured firewall rules for improved security.";
-        } else if (lowercaseMessage.includes('skill')) {
-            response = "My skills include network configuration, information security, ethical hacking, cloud security, encryption technologies, and data protection.";
-        } else if (lowercaseMessage.includes('contact') || lowercaseMessage.includes('email')) {
-            response = "You can contact me at sjackson4430@gmail.com. I'm always open to discussing new opportunities or projects!";
-        } else if (lowercaseMessage.includes('hello') || lowercaseMessage.includes('hi')) {
-            response = "Hello! How can I assist you today? Feel free to ask about my skills, projects, or how to get in touch.";
-        }
-
-        console.log("Bot response:", response);
-        setTimeout(() => {
-            addMessage('bot', response);
-        }, 500);
-    }
-
-    // Initial greeting
-    setTimeout(() => {
-        console.log("Sending initial greeting");
-        addMessage('bot', "Hello! I'm the portfolio chatbot. How can I help you today?");
-    }, 1000);
-});
-
-console.log("Chatbot script completed");
+        const response = "I received your message: " + message;
