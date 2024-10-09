@@ -30,6 +30,120 @@
         .hover-scale:hover {
             transform: scale(1.05);
         }
+        /* Chatbot container */
+        #botpress-webchat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        /* Main chatbot layout */
+        .bpw-layout {
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 370px;
+            max-height: 600px;
+        }
+
+        /* Header styles */
+        .bpw-header-container {
+            background-color: #4a90e2;
+            padding: 15px;
+        }
+
+        .bpw-header-title-container .bpw-header-title {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .bpw-header-icon, .bpw-header-icon-background {
+            border-color: #ffffff;
+        }
+
+        /* Chat container */
+        .bpw-chat-container {
+            background-color: #f8f9fa;
+        }
+
+        /* Message bubbles */
+        .bpw-chat-bubble-content {
+            border-radius: 18px;
+            padding: 12px 18px;
+            font-size: 14px;
+        }
+
+        .bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
+            background-color: #4a90e2;
+            color: #ffffff;
+        }
+
+        .bpw-from-bot .bpw-chat-bubble .bpw-chat-bubble-content {
+            background-color: #ffffff;
+            color: #333333;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Composer area */
+        .bpw-composer {
+            border-top: 1px solid #e0e0e0;
+            padding: 10px;
+        }
+
+        .bpw-composer textarea {
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+
+        .bpw-send-button {
+            background-color: #4a90e2;
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        .bpw-send-button:hover {
+            background-color: #3a7bc8;
+        }
+
+        /* Scrollbar styles */
+        .bpw-chat-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .bpw-chat-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .bpw-chat-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
+
+        .bpw-chat-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bpw-chat-bubble {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .bpw-layout {
+                max-width: 90vw;
+                max-height: 80vh;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -205,7 +319,7 @@ print(f"Open ports are: {open_ports}")
 
     <!-- Footer -->
     <footer class="text-center py-4">
-        <p>&copy; Steven Jackson 2024. All rights reserved.</p>
+        <p>&copy; Steven 2024. All rights reserved.</p>
     </footer>
 
     <script>
