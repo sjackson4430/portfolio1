@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Steven Jackson's portfolio - Networking and Information Systems Security Specialist">
     <title>My Portfolio - Networking and Information Systems Security</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs@3.10.5" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/chatbot.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
         body {
@@ -30,317 +33,183 @@
         .hover-scale:hover {
             transform: scale(1.05);
         }
-        /* Chatbot container */
-        #botpress-webchat-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        /* Main chatbot layout */
-        .bpw-layout {
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            max-width: 370px;
-            max-height: 600px;
-        }
-
-        /* Header styles */
-        .bpw-header-container {
-            background-color: #4a90e2;
-            padding: 15px;
-        }
-
-        .bpw-header-title-container .bpw-header-title {
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .bpw-header-icon, .bpw-header-icon-background {
-            border-color: #ffffff;
-        }
-
-        /* Chat container */
-        .bpw-chat-container {
-            background-color: #f8f9fa;
-        }
-
-        /* Message bubbles */
-        .bpw-chat-bubble-content {
-            border-radius: 18px;
-            padding: 12px 18px;
-            font-size: 14px;
-        }
-
-        .bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
-            background-color: #4a90e2;
-            color: #ffffff;
-        }
-
-        .bpw-from-bot .bpw-chat-bubble .bpw-chat-bubble-content {
-            background-color: #ffffff;
-            color: #333333;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Composer area */
-        .bpw-composer {
-            border-top: 1px solid #e0e0e0;
-            padding: 10px;
-        }
-
-        .bpw-composer textarea {
-            border: 1px solid #e0e0e0;
-            border-radius: 20px;
-            padding: 10px 15px;
-            font-size: 14px;
-        }
-
-        .bpw-send-button {
-            background-color: #4a90e2;
-            border-radius: 50%;
-            padding: 10px;
-        }
-
-        .bpw-send-button:hover {
-            background-color: #3a7bc8;
-        }
-
-        /* Scrollbar styles */
-        .bpw-chat-container::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .bpw-chat-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .bpw-chat-container::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 3px;
-        }
-
-        .bpw-chat-container::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .bpw-chat-bubble {
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            .bpw-layout {
-                max-width: 90vw;
-                max-height: 80vh;
-            }
-        }
     </style>
 </head>
 <body class="min-h-screen">
-    <!-- Navbar -->
-    <nav class="fixed w-full z-10 glass-effect">
-        <div class="container mx-auto flex justify-between items-center p-4">
-            <h1 class="text-2xl font-bold neon-text">My Portfolio</h1>
-            <ul class="flex space-x-6">
-                <li><a href="#about" class="hover:text-blue-400 transition duration-300">About</a></li>
-                <li><a href="#skills" class="hover:text-blue-400 transition duration-300">Skills</a></li>
-                <li><a href="#projects" class="hover:text-blue-400 transition duration-300">Projects</a></li>
-                <li><a href="#code-showcase" class="hover:text-blue-400 transition duration-300">Code</a></li>
-                <li><a href="#contact" class="hover:text-blue-400 transition duration-300">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
+    <main id="main-content">
+        <!-- Navbar -->
+        <nav class="fixed w-full z-10 glass-effect">
+            <div class="container mx-auto flex justify-between items-center p-4">
+                <h1 class="text-2xl font-bold neon-text">My Portfolio</h1>
+                <ul class="flex space-x-6">
+                    <li><a href="#about" class="hover:text-blue-400 transition duration-300">About</a></li>
+                    <li><a href="#skills" class="hover:text-blue-400 transition duration-300">Skills</a></li>
+                    <li><a href="#projects" class="hover:text-blue-400 transition duration-300">Projects</a></li>
+                    <li><a href="#code-showcase" class="hover:text-blue-400 transition duration-300">Code</a></li>
+                    <li><a href="#contact" class="hover:text-blue-400 transition duration-300">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
 
-    <!-- Header Section -->
-    <header class="h-screen flex items-center justify-center">
-        <div class="text-center">
-            <h2 class="text-5xl font-bold mb-4 neon-text">Hello, I'm Steven Jackson</h2>
-            <p class="text-2xl">A Networking & Information Systems Security Specialist</p>
-        </div>
-    </header>
+        <!-- Header Section -->
+        <header class="h-screen flex items-center justify-center">
+            <div class="text-center">
+                <h2 class="text-5xl font-bold mb-4 neon-text">Hello, I'm Steven Jackson</h2>
+                <p class="text-2xl">A Networking & Information Systems Security Specialist</p>
+            </div>
+        </header>
 
-    <!-- About Section -->
-    <section id="about" class="py-20">
-        <div class="container mx-auto text-center">
-            <h3 class="text-4xl font-bold mb-8 neon-text">About Me</h3>
-            <p class="text-xl max-w-3xl mx-auto">I'm a passionate and experienced networking and information systems security professional with extensive skills in configuring, securing, and managing complex networks. I thrive on solving security challenges and ensuring robust information protection systems.</p>
-        </div>
-    </section>
-    
-<!-- ... previous HTML code ... -->
+        <!-- About Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto text-center">
+                <h3 class="text-4xl font-bold mb-8 neon-text">About Me</h3>
+                <p class="text-xl max-w-3xl mx-auto">I'm a passionate and experienced networking and information systems security professional with extensive skills in configuring, securing, and managing complex networks. I thrive on solving security challenges and ensuring robust information protection systems.</p>
+            </div>
+        </section>
+        
+        <!-- ... previous HTML code ... -->
 
-
-<script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2024/10/08/04/20241008043851-SUHO8AVV.js"></script>
-    
-
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20">
-        <div class="container mx-auto">
-            <h3 class="text-4xl font-bold text-center mb-12 neon-text">Skills</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glass-effect p-6 hover-scale">
-                    <i class="fas fa-network-wired text-4xl text-blue-400 mb-4"></i>
-                    <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Computer_network" target="_blank" class="hover:text-blue-400">Network Configuration</a></h4>
-                    <p>Designing and configuring reliable networks using the latest technologies.</p>
-                </div>
-                <div class="glass-effect p-6 hover-scale">
-                    <i class="fas fa-shield-alt text-4xl text-green-400 mb-4"></i>
-                    <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Information_security" target="_blank" class="hover:text-green-400">Information Security</a></h4>
-                    <p>Implementing network firewalls, endpoint security, and incident response systems.</p>
-                </div>
-                <div class="glass-effect p-6 hover-scale">
-                    <i class="fas fa-user-secret text-4xl text-red-400 mb-4"></i>
-                    <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Penetration_test" target="_blank" class="hover:text-red-400">Ethical Hacking</a></h4>
-                    <p>Performing vulnerability assessments and penetration testing to uncover security gaps.</p>
-                </div>
-                <div class="glass-effect p-6 hover-scale">
-                    <i class="fas fa-cloud text-4xl text-indigo-400 mb-4"></i>
-                    <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Cloud_computing_security" target="_blank" class="hover:text-indigo-400">Cloud Security</a></h4>
-                    <p>Securing cloud infrastructure and ensuring compliance with best practices.</p>
-                </div>
-                <div class="glass-effect p-6 hover-scale">
-                    <i class="fas fa-lock text-4xl text-purple-400 mb-4"></i>
-                    <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Encryption" target="_blank" class="hover:text-purple-400">Encryption Technologies</a></h4>
-                    <p>Expertise in encryption protocols for data confidentiality and integrity.</p>
-                </div>
-                <div class="glass-effect p-6 hover-scale">
-                    <i class="fas fa-database text-4xl text-yellow-400 mb-4"></i>
-                    <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Data_security" target="_blank" class="hover:text-yellow-400">Data Protection</a></h4>
-                    <p>Ensuring the secure storage, access, and transfer of sensitive information.</p>
+        <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+        <script src="https://files.bpcontent.cloud/2024/10/08/04/20241008043851-SUHO8AVV.js"></script>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+            <div class="container mx-auto">
+                <h3 class="text-4xl font-bold text-center mb-12 neon-text">Skills</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-effect p-6 hover-scale">
+                        <i class="fas fa-network-wired text-4xl text-blue-400 mb-4"></i>
+                        <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Computer_network" target="_blank" class="hover:text-blue-400">Network Configuration</a></h4>
+                        <p>Designing and configuring reliable networks using the latest technologies.</p>
+                    </div>
+                    <div class="glass-effect p-6 hover-scale">
+                        <i class="fas fa-shield-alt text-4xl text-green-400 mb-4"></i>
+                        <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Information_security" target="_blank" class="hover:text-green-400">Information Security</a></h4>
+                        <p>Implementing network firewalls, endpoint security, and incident response systems.</p>
+                    </div>
+                    <div class="glass-effect p-6 hover-scale">
+                        <i class="fas fa-user-secret text-4xl text-red-400 mb-4"></i>
+                        <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Penetration_test" target="_blank" class="hover:text-red-400">Ethical Hacking</a></h4>
+                        <p>Performing vulnerability assessments and penetration testing to uncover security gaps.</p>
+                    </div>
+                    <div class="glass-effect p-6 hover-scale">
+                        <i class="fas fa-cloud text-4xl text-indigo-400 mb-4"></i>
+                        <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Cloud_computing_security" target="_blank" class="hover:text-indigo-400">Cloud Security</a></h4>
+                        <p>Securing cloud infrastructure and ensuring compliance with best practices.</p>
+                    </div>
+                    <div class="glass-effect p-6 hover-scale">
+                        <i class="fas fa-lock text-4xl text-purple-400 mb-4"></i>
+                        <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Encryption" target="_blank" class="hover:text-purple-400">Encryption Technologies</a></h4>
+                        <p>Expertise in encryption protocols for data confidentiality and integrity.</p>
+                    </div>
+                    <div class="glass-effect p-6 hover-scale">
+                        <i class="fas fa-database text-4xl text-yellow-400 mb-4"></i>
+                        <h4 class="text-xl font-semibold"><a href="https://en.wikipedia.org/wiki/Data_security" target="_blank" class="hover:text-yellow-400">Data Protection</a></h4>
+                        <p>Ensuring the secure storage, access, and transfer of sensitive information.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20">
-        <div class="container mx-auto text-center">
-            <h3 class="text-4xl font-bold mb-12 neon-text">Projects</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="glass-effect p-6 hover-scale">
-                    <h4 class="text-xl font-semibold mb-2">
-                        <a href="https://github.com/sjackson4430/network-segmentation-project" target="_blank" class="text-blue-400 hover:text-blue-300">
-                            Network Segmentation Project
-                        </a>
-                    </h4>
-                    <p class="text-lg mb-4">Segregated corporate network for improved security and reduced attack surface.</p>
-                    <ul class="text-left text-sm">
-                        <li><i class="fas fa-check text-green-400 mr-2"></i>Implemented VLAN segmentation</li>
-                        <li><i class="fas fa-check text-green-400 mr-2"></i>Configured firewall rules for inter-VLAN communication</li>
-                        <li><i class="fas fa-check text-green-400 mr-2"></i>Deployed network access control (NAC) solution</li>
-                    </ul>
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <div class="container mx-auto text-center">
+                <h3 class="text-4xl font-bold mb-12 neon-text">Projects</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-effect p-6 hover-scale">
+                        <h4 class="text-xl font-semibold mb-2">
+                            <a href="https://github.com/sjackson4430/network-segmentation-project" target="_blank" class="text-blue-400 hover:text-blue-300">
+                                Network Segmentation Project
+                            </a>
+                        </h4>
+                        <p class="text-lg mb-4">Segregated corporate network for improved security and reduced attack surface.</p>
+                        <ul class="text-left text-sm">
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Implemented VLAN segmentation</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Configured firewall rules for inter-VLAN communication</li>
+                            <li><i class="fas fa-check text-green-400 mr-2"></i>Deployed network access control (NAC) solution</li>
+                        </ul>
+                    </div>
+                    <!-- Add more projects as needed -->
                 </div>
-                <!-- Add more projects as needed -->
             </div>
-        </div>
-    </section>
-<!-- ... existing code ... -->
+        </section>
+        <!-- ... existing code ... -->
 
-<!-- Python Code Showcase Section -->
-<section id="code-showcase" class="py-20">
-    <div class="container mx-auto">
-        <h3 class="text-4xl font-bold text-center mb-12 neon-text">Code Showcase</h3>
-        <div class="glass-effect p-6 hover-scale">
-            <h4 class="text-2xl font-semibold mb-4 text-blue-400">Network Port Scanner</h4>
-            <p class="mb-4">A Python script that scans for open ports on a given IP address:</p>
-            <pre class="bg-gray-800 text-green-400 p-4 rounded-lg overflow-x-auto">
-<code>import socket
-import threading
-from queue import Queue
+        <!-- Python Code Showcase Section -->
+        <section id="code-showcase" class="py-20">
+            <div class="container mx-auto">
+                <h3 class="text-4xl font-bold text-center mb-12 neon-text">Code Showcase</h3>
+                <div class="glass-effect p-6 hover-scale">
+                    <h4 class="text-2xl font-semibold mb-4 text-blue-400">Network Port Scanner</h4>
+                    <p class="mb-4">A Python script that scans for open ports on a given IP address:</p>
+                    <pre class="bg-gray-800 text-green-400 p-4 rounded-lg overflow-x-auto">
+        <code>import socket
+        import threading
+        from queue import Queue
 
-target = "example.com"
-queue = Queue()
-open_ports = []
+        target = "example.com"
+        queue = Queue()
+        open_ports = []
 
-def portscan(port):
-    try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.connect((target, port))
-        return True
-    except:
-        return False
+        def portscan(port):
+            try:
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.connect((target, port))
+                return True
+            except:
+                return False
 
-def fill_queue(port_list):
-    for port in port_list:
-        queue.put(port)
+        def fill_queue(port_list):
+            for port in port_list:
+                queue.put(port)
 
-def worker():
-    while not queue.empty():
-        port = queue.get()
-        if portscan(port):
-            print(f"Port {port} is open!")
-            open_ports.append(port)
+        def worker():
+            while not queue.empty():
+                port = queue.get()
+                if portscan(port):
+                    print(f"Port {port} is open!")
+                    open_ports.append(port)
 
-port_list = range(1, 1024)
-fill_queue(port_list)
+        port_list = range(1, 1024)
+        fill_queue(port_list)
 
-thread_list = []
+        thread_list = []
 
-for t in range(100):
-    thread = threading.Thread(target=worker)
-    thread_list.append(thread)
+        for t in range(100):
+            thread = threading.Thread(target=worker)
+            thread_list.append(thread)
 
-for thread in thread_list:
-    thread.start()
+        for thread in thread_list:
+            thread.start()
 
-for thread in thread_list:
-    thread.join()
+        for thread in thread_list:
+            thread.join()
 
-print(f"Open ports are: {open_ports}")
-</code>
-            </pre>
-            <p class="mt-4">This script demonstrates multithreaded port scanning, a useful technique in network security analysis.</p>
-        </div>
-    </div>
-</section>
+        print(f"Open ports are: {open_ports}")
+        </code>
+                    </pre>
+                    <p class="mt-4">This script demonstrates multithreaded port scanning, a useful technique in network security analysis.</p>
+                </div>
+            </div>
+        </section>
 
-<!-- ... rest of the existing code ... -->
+        <!-- ... rest of the existing code ... -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <div class="container mx-auto text-center">
-            <h3 class="text-4xl font-bold mb-8 neon-text">Get In Touch</h3>
-            <p class="text-xl mb-8">Feel free to contact me for any project or job opportunity.</p>
-            <a href="mailto:sjackson4430@gmail.com" class="bg-blue-600 text-white py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 inline-block">Contact Me</a>
-        </div>
-    </section>
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto text-center">
+                <h3 class="text-4xl font-bold mb-8 neon-text">Get In Touch</h3>
+                <p class="text-xl mb-8">Feel free to contact me for any project or job opportunity.</p>
+                <a href="mailto:sjackson4430@gmail.com" class="bg-blue-600 text-white py-3 px-8 rounded-full hover:bg-blue-700 transition duration-300 inline-block">Contact Me</a>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer class="text-center py-4">
-        <p>&copy; Steven 2024. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Animate elements on scroll
-        function animateOnScroll() {
-            gsap.from('.glass-effect', {
-                scrollTrigger: {
-                    trigger: '.glass-effect',
-                    start: 'top bottom',
-                    end: 'bottom top',
-                    scrub: 1
-                },
-                y: 100,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.2
-            });
-        }
-
-        // Run animation on page load
-        window.addEventListener('load', animateOnScroll);
-    </script>
+        <!-- Footer -->
+        <footer class="text-center py-4">
+            <p>&copy; Steven 2024. All rights reserved.</p>
+        </footer>
+    </main>
+    <script src="js/main.js" defer></script>
 </body>
 </html>
